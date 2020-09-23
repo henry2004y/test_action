@@ -34,6 +34,19 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: Clone GitHub repository
+        run: git clone git@github.com:henry2004y/MGSolver
+      
+      - name: Clone GitLab repository
+        run: git clone git@gitlab.com:gitlab-examples/ruby-function
+
+      - name: Setup GitLab SSH
+        uses: MrSquaare/ssh-setup-action@v1
+        with:
+          host: gitlab.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY_GITLAB }}
+          private-key-name: gitlab
+
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
