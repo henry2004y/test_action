@@ -34,11 +34,14 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       
+      # Cannot directly clone a public repo!
+      - name: Clone GitHub repository
+        run: git clone git@github.com:henry2004y/Batsrus.jl
+        continue-on-error: true
+      
       - name: Clone GitLab repository
         run: git clone git@gitlab.com:gitlab-examples/ruby-function
-
-      - name: Clone GitHub repository
-        run: git clone git@github.com:henry2004y/MGSolver
+        continue-on-error: true
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
