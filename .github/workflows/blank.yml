@@ -34,6 +34,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v1
+        with:
+          host: github.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Clone GitHub repository
         run: git clone git@github.com:henry2004y/MGSolver
       
