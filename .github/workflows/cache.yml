@@ -33,6 +33,7 @@ jobs:
     - name: check
       run: |
         ls -l
+        ls -l ~/boost
         #dpkg -s libboost-dev | grep 'Version'
         cat /usr/include/boost/version.hpp | grep "BOOST_LIB_VERSION"
 
