@@ -85,6 +85,6 @@ jobs:
 
       - name: Check mpi & boost versions
         run: |
-          mpicc --version
+          #mpicc --version
           dpkg -s libboost-dev | grep 'Version'       
    
