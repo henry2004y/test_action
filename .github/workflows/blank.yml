@@ -74,7 +74,7 @@ jobs:
           if [[ steps.cache-mpi.outputs.cache-hit == 'true' ]]; then
             sudo cp --force --recursive ~/mpi/* /
           else
-            udo apt-get install openmpi-bin libopenmpi-dev
+            sudo apt-get install openmpi-bin libopenmpi-dev
             mkdir -p ~/mpi
             for dep in libopenmpi-dev; do
               dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/mpi/
