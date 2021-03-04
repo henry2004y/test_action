@@ -35,6 +35,7 @@ jobs:
         ls -l
         ls -l ~/boost
         ls -l ~/boost/usr
+        ls -l ~/boost/usr/share
         #dpkg -s libboost-dev | grep 'Version'
         cat /usr/include/boost/version.hpp | grep "BOOST_LIB_VERSION"
 
