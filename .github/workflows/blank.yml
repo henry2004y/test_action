@@ -48,4 +48,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Julia
+        run: julia -e 'println("Hello from Julia!")'
+        continue-on-error: true
+        
+      - name: GCC
+        run: which gcc
+          
           ls -l
