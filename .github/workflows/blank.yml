@@ -65,9 +65,7 @@ jobs:
         if: steps.cache-files.outputs.cache-hit == 'true'
         run: | 
           sudo cp --force --recursive ~/mpi/* /
-          mpicc --version
           sudo cp --force --recursive ~/boost/* /
-          dpkg -s libboost-dev | grep 'Version'
           
       - name: Install mpi & boost
         if: steps.cache-files.outputs.cache-hit != 'true'
