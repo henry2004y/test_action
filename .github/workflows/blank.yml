@@ -39,18 +39,11 @@ jobs:
         run: git clone git@gitlab.com:gitlab-examples/ruby-function
         continue-on-error: true
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
       - name: Julia
         run: |
            julia -v
            julia -e 'println("Hello from Julia!")'
            julia -e 'using Pkg; Pkg.add("Vlasiator")'
-        continue-on-error: true
         
       - name: GCC
         run: |
@@ -84,10 +77,14 @@ jobs:
           for dep in libopenmpi-dev; do
             dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/mpi/
           done
-          mpicc --version
           sudo apt-get install libboost-all-dev
           mkdir -p ~/boost
           for dep in libboost-all-dev; do
             dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
           done
-          dpkg -s libboost-dev | grep 'Version'
+
+      - name: Check mpi & boost versions
+        run: |
+          mpicc --version
+          dpkg -s libboost-dev | grep 'Version'       
+   
