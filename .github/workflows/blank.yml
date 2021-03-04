@@ -29,10 +29,6 @@ jobs:
           # Default: ${{ github.repository }}
           repository: henry2004y/Batsrus.jl
           path: my-tools
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
       
       # Cannot directly clone a public repo!
       - name: Clone GitHub repository
