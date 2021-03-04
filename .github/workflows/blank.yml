@@ -53,7 +53,7 @@ jobs:
         run: |
            julia -v
            julia -e 'println("Hello from Julia!")'
-           julia -e 'using Pkg; Pkg.install("Vlasiator")'
+           julia -e 'using Pkg; Pkg.add("Vlasiator")'
         continue-on-error: true
         
       - name: GCC
@@ -65,10 +65,13 @@ jobs:
            
       - name: MPI
         run: |
+           sudo apt-get install openmpi-bin libopenmpi-dev
            mpicc --version
         continue-on-error: true
         
       - name: Boost
-        run: dpkg -s libboost-dev | grep 'Version'
+        run: |
+           sudo apt-get install libboost-all-dev
+           dpkg -s libboost-dev | grep 'Version'
 
 
