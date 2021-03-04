@@ -50,10 +50,25 @@ jobs:
           echo test, and deploy your project.
 
       - name: Julia
-        run: julia -e 'println("Hello from Julia!")'
+        run: |
+           julia -v
+           julia -e 'println("Hello from Julia!")'
+           julia -e 'using Pkg; Pkg.install("Vlasiator")'
         continue-on-error: true
         
       - name: GCC
-        run: which gcc
-          
-          ls -l
+        run: |
+           which gcc
+           gcc --version
+           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+           gcc --version
+           
+      - name: MPI
+        run: |
+           mpicc --version
+        continue-on-error: true
+        
+      - name: Boost
+        run: dpkg -s libboost-dev | grep 'Version'
+
+
